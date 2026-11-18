@@ -1,0 +1,15 @@
+name: Calendar port independent check
+on:
+  push:
+    branches: [qa/calendar-port-187]
+permissions:
+  contents: read
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 .github/calendar_linux_check.py
